@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda de Olivia y Daniel</title>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #F2EEE3;
+            --olive-green: #4C5135;
+            --dark-green: #303522;
+            --gold: #A89561;
+            --cream: #F7F3E9;
+            --white: #FFFFFF;
+            --text-color: #38362D;
+            
+            --font-title: 'Playfair Display', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-body: 'Lora', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e0dcd3;
+            color: var(--text-color);
+            font-family: var(--font-body);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            /* Textura sutil para el fondo */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+
+        .invitation-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            background-color: var(--bg-color);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Líneas divisorias entre columnas */
+        .column:not(:last-child) {
+            border-right: 1px solid rgba(168, 149, 97, 0.3);
+        }
+
+        /* Tipografía Común */
+        h1, h2, h3 {
+            font-family: var(--font-title);
+            font-weight: 400;
+            color: var(--text-color);
+        }
+
+        .script-text {
+            font-family: var(--font-script);
+            color: var(--olive-green);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            color: var(--gold);
+        }
+        
+        .divider::before, .divider::after {
+            content: "";
+            height: 1px;
+            width: 30px;
+            background-color: var(--gold);
+            margin: 0 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--olive-green);
+            color: var(--cream);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* ----- COLUMNA IZQUIERDA ----- */
+        .intro-text {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .names-title {
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 20px;
+            color: var(--dark-green);
+        }
+
+        .names-title span {
+            font-family: var(--font-script);
+            font-size: 2.5rem;
+            display: block;
+            margin: 10px 0;
+            color: var(--gold);
+        }
+
+        .invite-text {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-top: 20px;
+        }
+        
+        .invite-boda {
+            font-family: var(--font-script);
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: var(--olive-green);
+        }
+
+        .main-photo-wrapper {
+            position: relative;
+            margin: 30px 0;
+            padding: 10px;
+        }
+
+        .main-photo {
+            width: 240px;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 120px; /* Óvalo */
+            border: 4px solid var(--cream);
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        .message-section {
+            margin: 20px 0;
+        }
+        
+        .message-section h3 {
+            font-family: var(--font-script);
+            font-size: 2.5rem;
+            color: var(--olive-green);
+            margin-bottom: -5px;
+        }
+
+        .message-section h4 {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--dark-green);
+            margin-bottom: 15px;
+        }
+
+        .message-section p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            padding: 0 20px;
+        }
+
+        .save-date {
+            margin: 30px 0;
+        }
+
+        .save-date-title {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .save-date-date {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--dark-green);
+            margin-bottom: 5px;
+        }
+
+        /* Calendario Minimalista */
+        .calendar-wrapper {
+            width: 100%;
+            max-width: 260px;
+            margin: 20px auto;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+        }
+        
+        .calendar-month {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+
+        .calendar-header {
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 0.7rem;
+        }
+
+        .calendar-day {
+            padding: 5px 0;
+        }
+
+        .calendar-day.highlight {
+            background-color: var(--dark-green);
+            color: var(--cream);
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* Bloques oscuros tipo acuarela/papel rasgado */
+        .dark-block {
+            background-color: var(--dark-green);
+            color: var(--cream);
+            width: 100%;
+            padding: 40px 20px;
+            margin-top: 30px;
+            position: relative;
+        }
+        
+        .dark-block h3, .dark-block h2, .dark-block p {
+            color: var(--cream);
+        }
+
+        .dark-block::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--dark-green);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .dark-block::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--dark-green);
+            border-radius: 0 0 50% 50% / 0 0 100% 100%;
+        }
+
+        /* ----- COLUMNA CENTRAL ----- */
+        .floral-decor {
+            width: 100%;
+            height: 150px;
+            background-image: url('https://images.unsplash.com/photo-1512168203104-3910cbcefaeb?auto=format&fit=crop&q=80&w=400');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .timeline-section {
+            width: 100%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Línea dorada vertical */
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            left: 45px;
+            top: 20px;
+            bottom: 20px;
+            width: 1px;
+            background-color: var(--gold);
+            z-index: 1;
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--olive-green);
+            color: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 2;
+            margin-right: 20px;
+            box-shadow: 0 0 0 4px var(--bg-color);
+        }
+
+        .timeline-content {
+            text-align: left;
+            padding-top: 5px;
+        }
+
+        .timeline-time {
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--dark-green);
+        }
+
+        .timeline-event {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-top: 5px;
+        }
+
+        .dress-code {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .dress-code-title {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .colors {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .color-swatch {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .quote {
+            font-family: var(--font-body);
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 40px 20px;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '“';
+            font-family: var(--font-title);
+            font-size: 4rem;
+            color: var(--gold);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.3;
+        }
+
+        /* ----- COLUMNA DERECHA ----- */
+        .venue-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin: 20px 0;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .venue-name {
+            font-family: var(--font-script);
+            font-size: 2.5rem;
+            color: var(--olive-green);
+            margin-bottom: 10px;
+        }
+
+        .venue-address {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .gallery-item:first-child {
+            grid-column: 1 / -1;
+            height: 180px;
+        }
+
+        .qr-section {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            margin-top: 15px;
+        }
+
+        .footer-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-top: 20px;
+            border: 4px solid var(--white);
+        }
+
+        /* ----- Diseño Responsivo ----- */
+        @media (max-width: 992px) {
+            .invitation-container {
+                grid-template-columns: 1fr;
+            }
+            .column:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid rgba(168, 149, 97, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation-container">
+        
+        <!-- COLUMNA 1: INTRO Y FECHA -->
+        <div class="column">
+            <p class="intro-text">Juntos con<br>nuestras familias</p>
+            <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
+            
+            <h1 class="names-title">
+                OLIVIA
+                <span>y</span>
+                DANIEL
+            </h1>
+            
+            <p class="invite-text">TE INVITAMOS A<br>NUESTRA</p>
+            <div class="invite-boda">Boda</div>
+            
+            <div class="main-photo-wrapper">
+                <!-- Foto Principal (Reemplazar con la tuya) -->
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Olivia y Daniel" class="main-photo">
+            </div>
+
+            <div class="message-section">
+                <h3>Nos casamos</h3>
+                <h4>¡ESTAMOS FELICES!</h4>
+                <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
+                <p>Agradecemos a Dios por permitirnos llegar hasta aquí y a ustedes por ser parte de este momento tan especial en nuestras vidas.</p>
+            </div>
+
+            <div class="save-date">
+                <p class="save-date-title">RESERVA LA FECHA</p>
+                <div class="save-date-date">22 &bull; 11 &bull; 2025</div>
+                <p class="save-date-title">SÁBADO</p>
+            </div>
+
+            <div class="calendar-wrapper">
+                <div class="calendar-month">Noviembre 2025</div>
+                <div class="calendar-grid calendar-header">
+                    <div>DOM</div><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div>
+                </div>
+                <div class="calendar-grid">
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div><div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div><div class="calendar-day">10</div><div class="calendar-day">11</div><div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div><div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div><div class="calendar-day highlight">22</div>
+                    <div class="calendar-day">23</div><div class="calendar-day">24</div><div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                </div>
+            </div>
+
+            <div class="dark-block">
+                <p style="font-family: var(--font-script); font-size: 2rem; color: var(--gold); margin-bottom: 5px;">Con amor,</p>
+                <h2 style="font-size: 2rem; letter-spacing: 2px;">OLIVIA<br><span style="font-family: var(--font-script); font-size: 1.5rem; color: var(--gold); text-transform: lowercase;">y</span><br>DANIEL</h2>
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Recepción" style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-top: 20px; opacity: 0.9;">
+            </div>
+        </div>
+
+        <!-- COLUMNA 2: PROGRAMA -->
+        <div class="column">
+            <!-- Arreglo floral superior simulado -->
+            <div class="floral-decor"></div>
+            
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">PROGRAMA<br>DE LA BODA</h2>
+            <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
+
+            <div class="timeline-section">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-ring"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">15:00</div>
+                        <div class="timeline-event">Llegada de invitados</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">15:30</div>
+                        <div class="timeline-event">Cóctel de bienvenida<br>y refrigerios</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-church"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">16:00</div>
+                        <div class="timeline-event">Ceremonia</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-camera"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">16:30</div>
+                        <div class="timeline-event">Sesión de fotos</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">18:00</div>
+                        <div class="timeline-event">Banquete</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">20:30</div>
+                        <div class="timeline-event">Cena<br>y discursos</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-sparkles"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">23:00</div>
+                        <div class="timeline-event">Fin de la celebración</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dark-block dress-code" style="margin-top: 0;">
+                <p class="dress-code-title" style="color: var(--gold);">CÓDIGO DE VESTIMENTA</p>
+                <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem; color: var(--gold);"></i></div>
+                <div class="colors">
+                    <div class="color-swatch" style="background-color: #F1EDE2;"></div>
+                    <div class="color-swatch" style="background-color: #D5D0BC;"></div>
+                    <div class="color-swatch" style="background-color: #727653;"></div>
+                    <div class="color-swatch" style="background-color: #A69B89;"></div>
+                    <div class="color-swatch" style="background-color: #303522;"></div>
+                </div>
+                <p style="font-size: 0.95rem; line-height: 1.6;">Te pedimos vestir<br>con los colores de nuestra boda.<br>¡Tu presencia es nuestro<br>mejor regalo!</p>
+            </div>
+
+            <div class="quote">
+                Un matrimonio exitoso<br>requiere enamorarse muchas<br>veces, siempre de la misma<br>persona.
+            </div>
+            <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
+            
+            <div class="floral-decor" style="height: 100px; margin-top: 20px; background-image: url('https://images.unsplash.com/photo-1508904838618-971c6674a9db?auto=format&fit=crop&q=80&w=400');"></div>
+        </div>
+
+        <!-- COLUMNA 3: LUGAR Y DETALLES -->
+        <div class="column">
+            <h2 style="font-size: 2rem;">LUGAR</h2>
+            <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
+
+            <!-- Foto de Villa (Reemplazar) -->
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa Pedregal" class="venue-photo">
+            
+            <div class="venue-name">Villa Pedregal</div>
+            <p class="venue-address">
+                Av. de los Jardines 123<br>
+                Jardines de México,<br>
+                Ciudad de México, C.P. 12345
+            </p>
+            <a href="#" class="btn">VER EN EL MAPA</a>
+
+            <h2 style="font-size: 1.8rem; margin-top: 40px;">GALERÍA</h2>
+            <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
+
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="gallery-item" alt="Decoración">
+                <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="gallery-item" alt="Detalles">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="gallery-item" alt="Anillos">
+            </div>
+            <a href="#" class="btn">VER MÁS FOTOS</a>
+
+            <div class="qr-section">
+                <h3 style="font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 10px;">VISITA NUESTRO SITIO</h3>
+                <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
+                <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-color);">Escanea el código QR para visitar<br>nuestro sitio web de boda donde<br>encontrarás más detalles<br>e información importante.</p>
+                <!-- Generador de QR dinámico (Cámbialo por tu código QR real) -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/tu-usuario/tu-repo" alt="Código QR" class="qr-code">
+            </div>
+
+            <div class="dark-block" style="margin-top: auto;">
+                <h3 style="font-family: var(--font-script); font-size: 3rem; color: var(--gold); margin-bottom: 10px;">¡Gracias!</h3>
+                <p style="font-size: 1rem; line-height: 1.5;">No podemos esperar para<br>celebrar con ustedes.</p>
+                <div class="divider"><i class="fa-solid fa-heart" style="font-size: 0.7rem; color: var(--gold);"></i></div>
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Despedida" class="footer-image" style="border: none;">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
