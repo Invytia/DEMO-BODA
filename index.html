@@ -39,7 +39,7 @@
             font-family: var(--font-body);
             display: flex;
             justify-content: center;
-            padding: 20px 10px; /* Reducido para menor espacio muerto */
+            padding: 20px 10px;
             background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
             overflow-x: hidden;
         }
@@ -47,7 +47,7 @@
         .invitation-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Reducido */
+            gap: 15px; 
             max-width: 1200px;
             width: 100%;
             background-color: var(--bg-color);
@@ -59,7 +59,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 25px 15px; /* Reducido espacio muerto */
+            padding: 25px 15px; 
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -69,7 +69,7 @@
             border-right: 1px solid rgba(168, 149, 97, 0.3);
         }
 
-        /* --- ANIMACIONES DE ENTRADA --- */
+        /* --- ANIMACIONES --- */
         .fade-in {
             opacity: 0;
             transform: translateY(25px);
@@ -96,7 +96,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 10px 0; /* Reducido */
+            margin: 10px 0; 
             color: var(--gold);
         }
         
@@ -128,7 +128,7 @@
             background-color: var(--dark-green);
         }
 
-        /* --- COLUMNA IZQUIERDA --- */
+        /* COLUMNA IZQUIERDA */
         .intro-text {
             font-family: var(--font-sans);
             font-size: 0.8rem;
@@ -224,7 +224,7 @@
             margin-bottom: 5px;
         }
 
-        /* Calendario 2026 */
+        /* Calendario */
         .calendar-wrapper {
             width: 100%;
             max-width: 260px;
@@ -265,11 +265,23 @@
             font-weight: bold;
         }
 
+        /* Bloque Pase de Entrada Dinámico */
+        .pase-block {
+            background-color: var(--white);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            width: 100%;
+            padding: 20px 15px;
+            margin: 20px 0;
+            display: none; /* Oculto por defecto, se activa con JS */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
         .dark-block {
             background-color: var(--dark-green);
             color: var(--cream);
             width: 100%;
-            padding: 30px 15px; /* Reducido */
+            padding: 30px 15px; 
             margin-top: 20px;
             position: relative;
         }
@@ -300,7 +312,17 @@
             border-radius: 0 0 50% 50% / 0 0 100% 100%;
         }
 
-        /* --- COLUMNA CENTRAL --- */
+        .dark-block-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-top: 15px;
+            opacity: 0.9;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        /* COLUMNA CENTRAL */
         .floral-decor {
             width: 100%;
             height: 120px;
@@ -400,7 +422,7 @@
             margin-top: 20px;
         }
 
-        /* --- COLUMNA DERECHA --- */
+        /* COLUMNA DERECHA */
         .venue-photo {
             width: 100%;
             height: 200px;
@@ -426,6 +448,25 @@
             margin-bottom: 10px;
         }
 
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .gallery-item:first-child {
+            grid-column: 1 / -1;
+            height: 180px;
+        }
+
         .qr-section {
             margin: 20px 0;
             padding: 15px;
@@ -440,7 +481,7 @@
             margin-top: 10px;
         }
 
-        /* Formularios Personalizados (Confirmación y Deseos) */
+        /* Formularios */
         .form-group {
             margin-bottom: 12px;
             text-align: left;
@@ -456,7 +497,7 @@
             letter-spacing: 1px;
         }
 
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input[type="text"], .form-group select, .form-group textarea {
             width: 100%;
             padding: 8px 10px;
             background: transparent;
@@ -469,7 +510,7 @@
             transition: all 0.3s;
         }
         
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-group input[type="text"]:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: var(--dark-green);
             background: rgba(255,255,255,0.5);
         }
@@ -481,6 +522,21 @@
             border-radius: 8px;
             border: 1px dashed var(--gold);
             margin-top: 10px;
+        }
+        
+        /* Radios personalizados para la asistencia */
+        .radio-container {
+            display: flex; 
+            gap: 15px;
+        }
+        
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text-color);
         }
 
         /* Responsive */
@@ -514,8 +570,16 @@
             <div class="invite-boda fade-in">Boda</div>
             
             <div class="main-photo-wrapper fade-in">
-                <!-- Reemplazar con foto real -->
-                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Olivia y Daniel" class="main-photo">
+                <!-- Imagen Hero actualizada a assets/hero.png -->
+                <img src="assets/hero.png" alt="Olivia y Daniel" class="main-photo">
+            </div>
+
+            <!-- Sección de Pases Dinámica (Se oculta si no hay URL params) -->
+            <div id="paseSection" class="pase-block fade-in">
+                <p style="font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 5px;">PASE DE ENTRADA</p>
+                <div class="divider"><i class="fa-solid fa-ticket" style="font-size: 0.7rem; color: var(--gold);"></i></div>
+                <h2 id="guestNameDisplay" style="font-size: 1.8rem; margin: 10px 0; color: var(--dark-green);">Invitado Especial</h2>
+                <p style="font-size: 1.1rem; font-family: var(--font-body);">Lugares reservados: <span id="guestPassesDisplay" style="font-weight: bold; color: var(--olive-green); font-size: 1.3rem;">2</span></p>
             </div>
 
             <div class="message-section fade-in">
@@ -531,7 +595,6 @@
                 <p class="save-date-title">SÁBADO</p>
             </div>
 
-            <!-- Calendario Actualizado 2026 -->
             <div class="calendar-wrapper fade-in">
                 <div class="calendar-month">Noviembre 2026</div>
                 <div class="calendar-grid calendar-header">
@@ -550,11 +613,14 @@
             <div class="dark-block fade-in">
                 <p style="font-family: var(--font-script); font-size: 1.8rem; color: var(--gold); margin-bottom: 5px;">Con amor,</p>
                 <h2 style="font-size: 1.8rem; letter-spacing: 2px;">OLIVIA<br><span style="font-family: var(--font-script); font-size: 1.3rem; color: var(--gold); text-transform: lowercase;">y</span><br>DANIEL</h2>
+                <!-- Imagen 1 añadida aquí según solicitud -->
+                <img src="assets/1.jpg" alt="Los Novios" class="dark-block-img">
             </div>
         </div>
 
         <!-- COLUMNA 2: PROGRAMA Y REGALOS -->
         <div class="column">
+            <!-- La decoración floral se mantiene justo arriba del programa -->
             <div class="floral-decor fade-in"></div>
             
             <h2 class="fade-in" style="font-size: 1.8rem; margin-bottom: 5px;">PROGRAMA<br>DE LA BODA</h2>
@@ -618,14 +684,13 @@
                 </div>
             </div>
 
-            <!-- NUEVA SECCION: MESA DE REGALOS -->
+            <!-- MESA DE REGALOS -->
             <div class="gift-registry fade-in" style="width: 100%; text-align: center; margin-top: 30px;">
                 <h2 style="font-size: 1.6rem; margin-bottom: 5px;">MESA DE REGALOS</h2>
                 <div class="divider"><i class="fa-solid fa-gift" style="font-size: 0.7rem;"></i></div>
                 <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te compartimos nuestras sugerencias.</p>
                 
                 <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
-                    <!-- Ajusta los links (href) a los tuyos -->
                     <a href="#" class="btn" style="width: 80%; background-color: #e10098; color: white;"><i class="fa-solid fa-store"></i> Liverpool (Evento #123456)</a>
                     <a href="#" class="btn" style="width: 80%; background-color: #232F3E; color: white;"><i class="fa-brands fa-amazon"></i> Wishlist de Amazon</a>
                 </div>
@@ -637,10 +702,14 @@
             <h2 class="fade-in" style="font-size: 1.8rem;">RECEPCIÓN</h2>
             <div class="divider fade-in"><i class="fa-solid fa-heart" style="font-size: 0.7rem;"></i></div>
 
-            <!-- Reemplazar con foto del lugar real -->
-            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa Pedregal" class="venue-photo fade-in">
-            
-            <div class="venue-name fade-in">Villa Pedregal</div>
+            <!-- GALERÍA: Se reemplazan por las imágenes de la carpeta assets -->
+            <div class="gallery-grid fade-in">
+                <img src="assets/2.jpg" class="gallery-item" alt="Galería 1">
+                <img src="assets/3.jpg" class="gallery-item" alt="Galería 2">
+                <img src="assets/4.jpg" class="gallery-item" alt="Galería 3">
+            </div>
+
+            <div class="venue-name fade-in" style="margin-top: 15px;">Villa Pedregal</div>
             <p class="venue-address fade-in">
                 Av. de los Jardines 123<br>
                 Jardines de México,<br>
@@ -648,40 +717,55 @@
             </p>
             <a href="#" class="btn fade-in"><i class="fa-solid fa-map-location-dot"></i> VER EN EL MAPA</a>
 
+            <!-- NOTA NIÑOS -->
+            <div class="fade-in" style="margin-top: 25px; padding: 15px; border: 1px solid rgba(168, 149, 97, 0.5); border-radius: 8px;">
+                <p style="font-size: 0.85rem; font-style: italic; line-height: 1.5; color: var(--dark-green);">
+                    <i class="fa-solid fa-moon" style="color: var(--gold); margin-right: 5px;"></i>
+                    Respetuosamente, hemos decidido que nuestra boda sea un evento exclusivo para adultos. Esperamos que disfruten de una merecida noche de celebración. Agradecemos su comprensión.
+                </p>
+            </div>
+
             <!-- GALERIA EN VIVO -->
             <div class="qr-section fade-in" style="margin-top: 30px;">
                 <h3 style="font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 5px;">GALERÍA EN VIVO</h3>
                 <div class="divider"><i class="fa-solid fa-camera-retro" style="font-size: 0.7rem;"></i></div>
                 <p style="font-size: 0.8rem; line-height: 1.4; color: var(--text-color);">Escanea el código QR el día del evento para subir tus fotos y videos en vivo y compartir los mejores momentos con nosotros.</p>
-                <!-- Generador de QR dinámico (Cámbialo por tu código QR real a la app de galería, ej. pov, kululu, etc) -->
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tu-galeria.com" alt="Código QR" class="qr-code">
             </div>
 
-            <!-- CONFIRMACIÓN DE ASISTENCIA -->
+            <!-- CONFIRMACIÓN DE ASISTENCIA DINÁMICA -->
             <div class="fade-in" style="width: 100%; margin-top: 20px;">
                 <h2 style="font-size: 1.6rem;">ASISTENCIA</h2>
                 <div class="divider"><i class="fa-solid fa-envelope-open-text" style="font-size: 0.7rem;"></i></div>
                 <div class="form-container">
                     <form id="rsvpForm">
-                        <div class="form-group">
-                            <label>Nombre(s):</label>
-                            <input type="text" id="rsvpNombre" required placeholder="Ej. Juan">
+                        
+                        <!-- Bloque para URL Genérica (sin parámetros) -->
+                        <div id="genericRSVPInputs">
+                            <div class="form-group">
+                                <label>Nombre(s):</label>
+                                <input type="text" id="rsvpNombre" placeholder="Ej. Juan">
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido(s):</label>
+                                <input type="text" id="rsvpApellido" placeholder="Ej. Pérez">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Asistirás?:</label>
+                                <select id="rsvpAsistencia">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="¡Sí, ahí estaré!">¡Sí, ahí estaré!</option>
+                                    <option value="Lamentablemente no podré asistir">Lamentablemente no podré asistir</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Apellido(s):</label>
-                            <input type="text" id="rsvpApellido" required placeholder="Ej. Pérez">
-                        </div>
-                        <div class="form-group">
-                            <label>¿Asistirás?:</label>
-                            <select id="rsvpAsistencia" required>
-                                <option value="">Selecciona una opción</option>
-                                <option value="¡Sí, ahí estaré!">¡Sí, ahí estaré!</option>
-                                <option value="Lamentablemente no podré asistir">Lamentablemente no podré asistir</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
+
+                        <!-- Bloque Dinámico (Se llena con JS si hay nombres en la URL) -->
+                        <div id="dynamicGuestList" style="width: 100%; text-align: left;"></div>
+
+                        <div class="form-group" style="margin-top: 15px;">
                             <label>Restricciones Alimenticias (Opcional):</label>
-                            <textarea id="rsvpAlergias" rows="2" placeholder="Alergias, vegano, etc."></textarea>
+                            <textarea id="rsvpAlergias" rows="2" placeholder="Alergias, menú vegetariano, etc."></textarea>
                         </div>
                         <button type="button" onclick="sendRSVP()" class="btn" style="width: 100%; background-color: #25D366; color: white; font-weight: bold;"><i class="fa-brands fa-whatsapp"></i> CONFIRMAR</button>
                     </form>
@@ -711,26 +795,148 @@
 
     </div>
 
-    <!-- SCRIPT PARA FUNCIONALIDADES (Animaciones, ICS y WhatsApp) -->
     <script>
-        // 1. Animaciones al hacer scroll (Intersection Observer)
+        // --- 1. CONFIGURACIÓN DEL TELÉFONO WHATSAPP ---
+        // IMPORTANTE: Reemplaza con tu número (Código de país + número, sin signos + ni espacios)
+        const telefonoWhatsApp = "525500000000"; 
+
+        // --- 2. LÓGICA DE PASES DINÁMICOS (AL CARGAR LA PÁGINA) ---
         document.addEventListener("DOMContentLoaded", function() {
+            // Animaciones Scroll
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
+            }, { threshold: 0.1 });
 
             document.querySelectorAll('.fade-in').forEach(element => {
                 observer.observe(element);
             });
+
+            // Leer Parámetros de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const invitado = urlParams.get('invitado');
+            const pases = urlParams.get('pases');
+            const nombresStr = urlParams.get('nombres');
+
+            // Mostrar el bloque visual del "PASE" si existen los datos
+            if (invitado && pases) {
+                document.getElementById('paseSection').style.display = 'block';
+                document.getElementById('guestNameDisplay').textContent = invitado;
+                document.getElementById('guestPassesDisplay').textContent = pases;
+            }
+
+            // Construir formulario dinámico de RSVP si hay nombres específicos
+            if (nombresStr) {
+                const nombres = nombresStr.split(',');
+                const listContainer = document.getElementById('dynamicGuestList');
+                
+                let html = `<label style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--olive-green); margin-bottom: 10px; display: block; font-weight: bold;">Selecciona quiénes asisten:</label>`;
+                
+                nombres.forEach((nombre, index) => {
+                    html += `
+                    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed rgba(168,149,97,0.4);">
+                        <span style="font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; color: var(--dark-green); flex: 1; min-width: 120px;">${nombre.trim()}</span>
+                        <div class="radio-container" style="flex-shrink: 0;">
+                            <label class="radio-label">
+                                <input type="radio" name="asistencia_${index}" value="Sí"> Sí
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="asistencia_${index}" value="No"> No
+                            </label>
+                        </div>
+                    </div>`;
+                });
+                
+                listContainer.innerHTML = html;
+                // Ocultar los campos genéricos porque ya tenemos la lista exacta
+                document.getElementById('genericRSVPInputs').style.display = 'none';
+            }
         });
 
-        // 2. Descargar evento para Calendario (.ics)
+        // --- 3. FUNCIÓN PARA ENVIAR RSVP A WHATSAPP ---
+        function sendRSVP() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const nombresStr = urlParams.get('nombres');
+            const invitado = urlParams.get('invitado');
+            const alergias = document.getElementById('rsvpAlergias').value.trim();
+            
+            let mensaje = "";
+
+            if (nombresStr) {
+                // Validación para Formulario Dinámico (Con círculos)
+                const nombres = nombresStr.split(',');
+                let confirmados = [];
+                let declinados = [];
+                let todosRespondidos = true;
+
+                nombres.forEach((nombre, index) => {
+                    const opcionElegida = document.querySelector(`input[name="asistencia_${index}"]:checked`);
+                    if (!opcionElegida) {
+                        todosRespondidos = false;
+                    } else if (opcionElegida.value === 'Sí') {
+                        confirmados.push(nombre.trim());
+                    } else {
+                        declinados.push(nombre.trim());
+                    }
+                });
+
+                if (!todosRespondidos) {
+                    alert("Por favor, selecciona si asiste o no cada persona de la lista.");
+                    return;
+                }
+
+                // Armado del mensaje Dinámico
+                mensaje = `¡Hola! Somos la *${invitado || 'Familia'}* y aquí está nuestra confirmación de asistencia:\n\n`;
+                if (confirmados.length > 0) {
+                    mensaje += `✅ *Asistirán:*\n- ${confirmados.join('\n- ')}\n\n`;
+                }
+                if (declinados.length > 0) {
+                    mensaje += `❌ *No podrán asistir:*\n- ${declinados.join('\n- ')}\n\n`;
+                }
+
+            } else {
+                // Validación para Formulario Genérico (Sin URL especial)
+                const nombre = document.getElementById('rsvpNombre').value.trim();
+                const apellido = document.getElementById('rsvpApellido').value.trim();
+                const asistencia = document.getElementById('rsvpAsistencia').value;
+
+                if(!nombre || !apellido || !asistencia) {
+                    alert("Por favor, completa tu nombre, apellido y estado de asistencia.");
+                    return;
+                }
+                
+                mensaje = `Hola, soy *${nombre} ${apellido}*.\n\nQuiero confirmar mi respuesta a la boda: *${asistencia}*\n\n`;
+            }
+
+            // Añadir restricciones alimenticias si las hay
+            if(alergias) {
+                mensaje += `⚠️ *Restricciones alimenticias:*\n${alergias}`;
+            }
+
+            // Redirigir a WhatsApp
+            const wpUrl = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(wpUrl, '_blank');
+        }
+
+        // --- 4. FUNCIÓN PARA ENVIAR BUENOS DESEOS ---
+        function sendWishes() {
+            const wishes = document.getElementById('wishesText').value.trim();
+            
+            if(!wishes) {
+                alert("Por favor, escribe un mensaje primero.");
+                return;
+            }
+
+            let mensaje = `¡Hola Olivia y Daniel! Les escribo para dejarles mis mejores deseos:\n\n"${wishes}"`;
+            const wpUrl = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+            window.open(wpUrl, '_blank');
+        }
+
+        // --- 5. DESCARGAR EVENTO (.ICS) ---
         function downloadICS() {
-            // Formato ICS estandarizado
             const calData = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Boda Olivia y Daniel//ES
@@ -742,7 +948,6 @@ LOCATION:Villa Pedregal, CDMX
 DESCRIPTION:¡Acompáñanos a celebrar nuestra boda!
 END:VEVENT
 END:VCALENDAR`;
-            // Se genera el blob para forzar la descarga en el navegador / celular
             const blob = new Blob([calData], { type: 'text/calendar;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -751,47 +956,6 @@ END:VCALENDAR`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-        }
-
-        // 3. Configuración del Teléfono para WhatsApp 
-        // IMPORTANTE: Reemplaza "525500000000" por tu número real. 
-        // 52 (Código de México) + 10 dígitos. (Ejemplo: 525512345678)
-        const telefonoWhatsApp = "525500000000"; 
-
-        // 4. Enviar RSVP (Confirmación de asistencia) por WhatsApp
-        function sendRSVP() {
-            const nombre = document.getElementById('rsvpNombre').value.trim();
-            const apellido = document.getElementById('rsvpApellido').value.trim();
-            const asistencia = document.getElementById('rsvpAsistencia').value;
-            const alergias = document.getElementById('rsvpAlergias').value.trim();
-
-            if(!nombre || !apellido || !asistencia) {
-                alert("Por favor, completa tu nombre, apellido y dinos si asistirás antes de confirmar.");
-                return;
-            }
-
-            let mensaje = `Hola, soy *${nombre} ${apellido}*.\n\nQuiero confirmar mi respuesta a la invitación de la boda: *${asistencia}*`;
-            if(alergias) {
-                mensaje += `\n\nMis restricciones alimenticias son: ${alergias}`;
-            }
-
-            const wpUrl = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-            window.open(wpUrl, '_blank');
-        }
-
-        // 5. Enviar Buenos Deseos por WhatsApp
-        function sendWishes() {
-            const wishes = document.getElementById('wishesText').value.trim();
-            
-            if(!wishes) {
-                alert("Por favor, escribe un mensaje primero.");
-                return;
-            }
-
-            let mensaje = `¡Hola Olivia y Daniel! Les escribo para dejarles mis mejores deseos para su boda:\n\n"${wishes}"`;
-            
-            const wpUrl = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-            window.open(wpUrl, '_blank');
         }
     </script>
 </body>
